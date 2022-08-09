@@ -1,0 +1,243 @@
+@import "Variables.scss";
+@import "Commun.scss";
+
+#contact{
+    margin-top: $sectionspacingLg;
+    display:flex;
+    .map, .contact-container{
+        width:50%;
+    }
+    .map{
+        background: rgb(196, 228, 196);
+        object-fit: fill; //pour que la carte occupe toute la partie disponible
+    }
+    .contact-container{
+        padding: 40px $sectionPaddingLg;
+        background: $blue-footer;
+
+        .footer-title{
+            font-family: Helvetica Neue LT Std 55 Roman;
+            color: $white;
+            font-size: 28pt;
+        }
+
+        form{
+            div{
+                position: relative; //label
+            }
+            div:nth-child(2), div:nth-child(3){ //téléphone et émail
+                width: 47.5%; //???TEMP??? VARIABLE
+                display: inline-block;
+            }
+            div:nth-child(2){
+                margin-right: 2.5%; //???TEMP??? VARIABLE
+            }
+            div:nth-child(3){
+                margin-left: 2.5%; //???TEMP??? VARIABLE
+            }
+            .floating-label{
+                position:absolute;
+                left:5px;
+                top: 35px;
+                color: grey;   
+            }
+            input:focus ~ .floating-label,
+            textarea:focus ~ .floating-label,
+            input:not(:focus):valid ~ .floating-label,
+            textarea:not(:placeholder-shown)~.floating-label{ //Place des labels quand on écrit sur les champs 
+                top: 15px;
+                bottom: 10px;
+                left: 0px;
+                font-size: 12px;
+                opacity: 1;
+            }
+            input, textarea{
+                background:none;
+                border: none;
+                border-bottom: 1px solid $grey;
+                color: $white;
+            }
+            textarea{
+                height:70px;
+                padding-right:15px;
+                overflow: scroll;
+                overflow-y: hidden;
+                overflow-x: hidden;
+            }
+            .scroll-up, .scroll-down{
+                color: $white;
+                background: none;
+                border: none;
+                position:absolute;
+                right:0px;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            .scroll-up{
+                top: 35px;
+            }
+            .scroll-down{
+                bottom: 5px;
+            }
+            input:focus, textarea:focus{
+                outline:none;
+            }
+            //inputs
+            #name, #phone, #email, #message{
+                width: 100%;                
+            } 
+            input, textarea, .form-btn{
+                margin-top: 40px; //TEMP?? VARIABLE
+            }  
+            //Les boutons 
+            .form-btn{
+                button{
+                    border: none;
+                    border-radius: 10px;
+                    padding: 6px 12px;
+                    color: $white;
+                }
+                button:hover{
+                    cursor: pointer;
+                }
+                button:nth-of-type(1){ //Normalement annuler
+                    background: grey;
+                }
+                button:nth-of-type(2) { //Envoyer
+                    background: $blue;
+                    margin-left: 30px; //Variable
+                    &:hover{
+                        background: $blue-nav;
+                    }
+                }
+            }    
+        }
+        .details-addresse{
+
+            margin-top: 50px;
+            @include logoPays;
+
+            p{
+                color:$grey;
+                transition: all 1s ease-in-out; //on veut ajouter un effet
+            }
+            .footer-info{
+                color: $white;
+
+                @include keyframes(fadeIn){
+                    0%{
+                        opacity: 0;
+                        }
+                    50%{
+                        opacity: 0.5;
+                        }
+                    100%{
+                        opacity: 1;
+                    }
+                }
+                @include animate(fadeIn, 0.8s, linear, 1);
+            }
+        }
+        .copyright{
+            border-top: 1px solid $grey;
+            padding-top: 15px; //Change?
+            p{
+                text-align:center;
+                color: $grey-footer;
+            }
+        }     
+    }
+}
+
+.branch-details{ //table
+    tr{
+        td{
+            padding: 5px 5px;
+            text-align: justify;
+
+            strong{
+                color: $blue;
+            }
+        }
+        .col1{
+            padding-left: 0;
+            color: $grey;
+        }
+        .col2{
+            color:$white;
+        }
+    }
+}
+
+//Responsive
+@include mediaXs{
+    #contact{
+        //margin-top: $sectionspacingLg;
+        //display:block;
+        flex-direction: column;
+        .map, .contact-container{
+            width:100%;
+        }
+        .map{
+            height: 250px;
+            order: 2;
+        }
+        .contact-container{
+            padding: 20px $sectionPaddingXs;
+            order: 1;
+            form{
+                div:nth-child(2), div:nth-child(3){ //téléphone et émail
+                    width: 100%; //???TEMP??? VARIABLE
+                }
+                div:nth-child(2){
+                    margin-right: 0; 
+                }
+                div:nth-child(3){
+                    margin-left: 0; 
+                }
+            }
+        }
+    }
+}
+
+@include mediaSm{
+    #contact{
+        .contact-container{
+            padding: 20px $sectionPaddingXs;
+            order: 1;
+            form{
+                div:nth-child(2), div:nth-child(3){ //téléphone et émail
+                    width: 100%; 
+                }
+                div:nth-child(2){
+                    margin-right: 0; 
+                }
+                div:nth-child(3){
+                    margin-left: 0; 
+                }
+            }
+        }
+    }
+}
+
+@include mediaMd{
+    #contact{
+        .contact-container{
+            padding: 20px $sectionPaddingMd;
+            order: 1;
+            form{
+                div:nth-child(2), div:nth-child(3){ //téléphone et émail
+                    width: 100%; 
+                }
+                div:nth-child(2){
+                    margin-right: 0; 
+                }
+                div:nth-child(3){
+                    margin-left: 0; 
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,85 @@
+@import "Variables.scss";
+@import "Commun.scss";
+
+
+.innovation{
+    display:flex;
+    background: $grey-bg;
+    padding: $sectionspacingLg 0;
+    .sectionTexte, .sectionImage{
+      width: 50%;   
+    }
+    .sectionTexte{ 
+        padding: 0px $sectionPaddingLg;
+        .secondTitle{
+            font-weight: lighter;
+            margin-bottom: 20px;
+        }
+        .image-innovation{
+            position: relative; //effac
+            display:flex;
+
+            //Codes à modifier selon les images réelles
+            img:nth-child(1){
+                height: 120px;
+            }
+            img:nth-child(2){
+                position: absolute;
+                height: 50px;
+                top: 30%;
+                transform: translateX(100%);
+            }
+            //Fin commentaire 
+        }
+        .geroba-link{
+            //color: $grey-txt;
+            color: $orange;
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    .sectionImage{
+        overflow: hidden;
+
+        img{
+            transform: translateX(85%);
+
+            @include keyframes(parallax){
+                0%{
+                    transform: translateX(85%);
+                    }
+                50%{
+                    transform: translateX(55%);opacity: 0.5;
+                    }
+                100%{
+                    transform: translateX(0%);
+                }
+            }
+            @include animate(parallax, 0.8s, linear, 1);  
+            //transition: all 0.3s ease-in;
+        }
+    }
+    .arrow-right{
+        font-size: 18px;
+        color: $orange;
+    }
+}
+
+
+//Responsive
+@include mediaXs{
+    .innovation{
+        display:block;
+        background: $grey-bg;
+        padding: $sectionspacingSm 0;
+        .sectionTexte, .sectionImage{
+          width: 100%;   
+        }
+        .sectionTexte{
+            padding: 0px $sectionPaddingXs;
+             
+        }
+    }
+}

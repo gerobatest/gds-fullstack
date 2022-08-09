@@ -1,0 +1,197 @@
+@import 'Commun.scss';
+@import "Variables.scss";
+
+.slider{
+  max-width:100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  //Navbar
+  .navbar{
+    position: absolute;
+    left: 20px;
+    //bottom: 150px;
+    bottom: 20%;
+
+    .header{
+      .navlinks{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        
+        width: 100%;
+
+        .link{
+          padding: 0px 20px;
+
+          &:hover{
+            transform: scale(1.15); 
+            font-family: Helvetica Neue 95 $black;
+          }
+
+          //Les liens de navigation
+          .nav-link{
+            font-family: Helvetica Neue Lt Std 65 Medium;
+            font-size: 12pt;
+            color: $white;
+            text-decoration: none;
+            text-shadow: 1px 1.5px $black; 
+            position: relative;
+          }
+
+          .nav-link::after { 
+            content: "";
+            position: absolute;
+            height: 3px;
+            background-color: $white; //$blueactive
+            width: 0;
+            left: 0px;
+            bottom: -10px;
+            transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;    
+          }
+
+          .nav-link:hover { 
+           
+            color:$white; //$blueactive
+            cursor: pointer;
+          }
+
+          .nav-link:hover::after { 
+            width: 14px;
+            border-radius: 10px;  
+          }
+        }
+      }
+    }
+  }
+
+  //Flèche direction au bas
+  .arrowDown{
+    position: absolute;
+    left: 60px;
+    bottom: 10%;
+
+    .arrowDownIcon{
+      font-size: 38px;
+      color: $white;
+    }
+  }
+
+
+  //fin navbar
+  //point slide
+  .container-dots {
+      position: absolute;
+      bottom: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+
+      //le button de slide de carousel 
+      .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          margin: 0 6px;
+          border-style: solid;
+          border:2px solid $white;
+          box-shadow: 1px 1px 1px 1px $black;
+
+          &.active {
+            background: $white;
+          }
+      }    
+    } 
+
+    //Scroll to top btn
+    .btn-top{
+      position:fixed;
+      bottom: 10px;
+      right: 10px;
+      opacity:0.8;
+      z-index:9999;
+
+      &:hover{
+        opacity:1;
+        cursor:pointer;
+      }
+    }
+}
+
+
+//fin point slide 
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  opacity: 0;
+  transform: translateX(50%); //eto 
+  transition: all .5s ease;
+  img{
+    height: 100%;
+      width: 100%;
+  }
+}
+
+.current {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+//Responsive styles
+@include mediaXs{
+  .slider{
+    height: 65vh;
+
+    .navbar{
+      display: none; //cacher pour l'instant
+    }
+  }
+}
+
+@include mediaSm{
+  .slider{
+    height: 50vh;
+
+    .navbar{
+      display: none; //cacher pour l'instant
+    }
+  }
+}
+
+@include mediaMd{
+  .slider{
+    height: 50vh;
+    .navbar{
+      display: none; //cacher pour l'instant
+    }
+  }
+}
+
+
+@include mediaXxl{
+  .slider{
+    height: 65vh;
+    .navbar{
+      .header{
+        .navlinks{
+          font-size: 30pt;
+          //Les liens de navigation
+          .nav-link{
+            font-size: 30pt; //aggrandir la police des textes : ne marche pas 
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+

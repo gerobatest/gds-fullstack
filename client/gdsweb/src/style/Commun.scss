@@ -1,0 +1,186 @@
+@import "Variables.scss";
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: $Helvetica;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif; //à changer
+}
+
+//preload images 
+body::after{
+    position:absolute; width:0; height:0; overflow:hidden; z-index:-1; // hide images
+    //content:url("slide1.jpg");
+    //content:url("/slide1.jpg") url("/slide2.jpg") url("/slide3.jpg");   // load images
+ }
+
+p, li{
+    line-height: $lineHeightLg;
+    color: $grey-txt;
+    text-align: justify;
+}
+
+li{
+    margin-left: 15px;
+}
+
+.title{
+    font-size: 45px;  //TEMP:
+    font-weight: lighter;
+    line-height: 45px; //espace entre les mots
+
+    strong{
+        font-size: 70px;
+        font-weight: bold;
+    }
+}
+
+.blue-title{
+    color: $blue;
+}
+.orange-title, .orange{ //Géroba 
+    color: $orange;
+}
+
+//Le style pour les branches 
+@mixin logoPays{
+    .places-list{
+        margin: 30px 0px;
+        display:flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-end;  //cette partie de code marche mais les Reunion et Maurice n'ont pas de lettres qui vont au bas
+        align-items: baseline;
+
+        .single-place{
+
+            img{
+                max-width:100%;
+                max-height:100%;
+                object-fit: contain;
+                display:flex;
+                flex-wrap: wrap;
+                align-items: center; 
+            }
+            .place-hover{
+                display:none;
+            }
+            &:hover{
+                cursor: pointer;
+                .placeBW{
+                    display:none;
+                }
+                .place-hover{
+                    display:block;
+                }
+            }
+        }  
+    }
+}
+
+
+//Style pour le bouton bleu qui rammène la partie affichée 
+@mixin buttonClose{
+    .btn-up{
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 10px;
+        border: 1px solid $blue;
+        border-radius: 50%;
+        background: none;
+        .arrowUp{
+            color: $blue;
+        }
+
+        &:hover{
+            cursor: pointer;
+            background: $blue;
+            .arrowUp{
+                color: $white;
+            }
+        }
+    }
+}
+
+//Responsive styles
+@include mediaXs{
+    p, li{
+        line-height: $lineHeightSm;
+        font-size: $fontsizeSm;
+        color: $grey-txt;
+    }
+    .title{
+        font-size: 35px;  //TEMP:
+        font-weight: lighter;
+        strong{
+            font-size:45px;
+            font-weight: bold;
+        }
+    }
+}
+
+@include mediaSm{
+    p, li{
+        line-height: $lineHeightSm;
+        font-size: $fontsizeSm;
+        color: $grey-txt;
+    }
+    .title{
+        font-size: 30px;  //TEMP:
+        font-weight: lighter;
+        strong{
+            font-size:40px;
+            font-weight: bold;
+        }
+    }
+}
+
+@include mediaMd{
+    p, li{
+        line-height: $lineHeightMd;
+        font-size: $fontsizeMd;
+        color: $grey-txt;
+    }
+    .title{
+        font-size: 35px;  //TEMP:
+        font-weight: lighter;
+        strong{
+            font-size:45px;
+            font-weight: bold;
+        }
+    }
+}
+
+@include mediaXl{
+    p, li{
+        line-height: $lineHeightXl;
+        font-size: $fontsizeXl;
+        color: $grey-txt;
+    }
+}
+
+@include mediaXxl{
+    .superContainer{
+        width: 2560px;
+        margin: auto;
+    }
+    p, li{
+        line-height: $lineHeightXxl;
+        font-size: $fontsizeXxl;
+        color: $grey-txt;
+    }
+    .title{
+        font-size: 80px;  //TEMP:
+        font-weight: lighter;
+        strong{
+            font-size:100px;
+            font-weight: bold;
+        }
+    }
+}

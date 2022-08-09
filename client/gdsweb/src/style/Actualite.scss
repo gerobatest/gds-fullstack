@@ -1,0 +1,161 @@
+@import "Variables.scss";
+@import "Commun.scss";
+
+.actualite{
+    margin-top: $sectionspacingLg;
+
+    .title-container{
+        width: 30%;
+        padding-left:$sectionPaddingLg;
+    }
+
+    .actu-container{
+        display: flex;
+
+        //Les liens
+        .nav-actu-container{
+            padding: 0 $sectionPaddingLg;
+            padding-top: $sectionspacingLg;
+            width: 30%;
+
+            .nav-actu{
+
+                li{
+                    list-style: none;
+                    margin-left: 0;
+
+                    .nav-actu-link{
+                        position: relative;
+                        display: block;
+                        background: none;
+                        border: none;
+                        color: $grey;
+                        margin: 20px 0px;
+                        
+                        &:hover { 
+                            color: $grey; 
+                            cursor: pointer;
+                        }
+
+                        &.active{
+                            font-weight: bold;
+                        }
+                    }    
+
+                    .nav-actu-link::after { 
+                        content: "";
+                        position: absolute;
+                        height: 3px;
+                        background-color: $grey;
+                        width: 0;
+                        left: 0px;
+                        bottom: -10px;
+                        transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;    
+                    }
+            
+                    .nav-actu-link:hover::after { 
+                        width: 14px;
+                        border-radius: 10px;  
+                    }
+                }         
+            }   
+        }
+
+        //Les publications selon les dates
+        .publication{
+            padding: 0 $sectionPaddingLg;
+            width: 70%;
+            margin: auto;
+
+            //Un article de presse
+            .singlePublication{
+                width: 70%;
+                margin: auto;
+
+
+                img{
+                    width: 100%;
+                    height: 75%;
+                    box-shadow: 0px 0px 3px 3px $grey-bg;
+                }
+
+                P{
+                    margin-top: 25px;
+                    color: $grey;
+                }
+                a{
+                    text-decoration: none;
+                    color:$blue;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    //ajoute l'animation scroll horizontal pour chaque section d'article
+    #post2021, #post2020, #postPress{
+        @include keyframes(scrollLeft){
+            0%{
+                transform: translateX(90%);
+            }
+           100%{
+                transform: translateX(0%);
+            }
+        }
+        @include animate(scrollLeft, 0.7s, linear, 1);
+    }
+}
+
+//Slider 
+
+
+//Responsive styles
+@include mediaXs{
+    .actualite{
+        margin-top: $sectionspacingSm;
+
+        .title-container{
+            width: 100%;
+            padding-left:$sectionPaddingXs;
+        }
+        .actu-container{
+            display: block;
+    
+            //Les liens
+            .nav-actu-container{
+                padding: 0 $sectionPaddingXs;
+                padding-top: $sectionspacingSm;
+                width: 100%;
+            }
+
+            .publication{
+                width: 100%;
+            }
+        }      
+    }
+
+}
+
+
+@include mediaXxl{
+    .actualite{
+        .actu-container{
+            //Les liens
+            .nav-actu-container{
+                h1{
+                    font-size: 35px;
+                }
+                .nav-actu{
+                    
+                    li {
+                        .nav-actu-link{
+                            font-size: 28px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
